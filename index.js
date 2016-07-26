@@ -1,5 +1,7 @@
 module.exports = function(source) {
   this.cacheable();
-
-  return eval(source);
+  var module2 = {};
+  source.replace('module.exports','module2.exports');
+  var evaled = eval(source);
+  return evaled.exports;
 };
